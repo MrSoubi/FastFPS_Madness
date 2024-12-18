@@ -3,7 +3,11 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+signal on_attack
+
 var last_mouse_position: Vector2
+
+@export var life: PlayerLife
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -11,6 +15,11 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate(Vector3.UP, -event.relative.x * 0.001)
+	
+	if event is InputEventMouseButton:
+		if event.button_index == 1:
+			print("anim")
+			on_attack.emit()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://dggxsed88765p"]
+
+[ext_resource type="PackedScene" uid="uid://csfy5ytsb88ce" path="res://Assets/SM_Wep_Pipe_01.fbx" id="1_bplc5"]
+[ext_resource type="Script" path="res://Scripts/wpn_pipe.gd" id="1_tfce0"]
+
+[sub_resource type="Animation" id="Animation_egdx2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SM_Wep_Pipe_01:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SM_Wep_Pipe_01:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.76505e-08, -2.92997, 0.203296)]
+}
+
+[sub_resource type="Animation" id="Animation_lm7kb"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SM_Wep_Pipe_01:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.428406, 0.0872192, -0.185181), Vector3(-0.258273, 0.0399755, -0.00540669), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SM_Wep_Pipe_01:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.76505e-08, -2.92997, 0.203296), Vector3(0.393719, -1.09487, 1.30746), Vector3(-0.0744884, -2.8487, 0.281182), Vector3(1.76505e-08, -2.92997, 0.203296)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ryrk5"]
+_data = {
+"RESET": SubResource("Animation_egdx2"),
+"attack": SubResource("Animation_lm7kb")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_glyix"]
+radius = 0.340615
+
+[node name="WPN_Pipe" type="Node3D"]
+script = ExtResource("1_tfce0")
+
+[node name="SM_Wep_Pipe_01" parent="." instance=ExtResource("1_bplc5")]
+transform = Transform3D(-0.957558, 0.197395, -0.210047, 0.201899, 0.979407, -1.76505e-08, 0.205721, -0.0424081, -0.977692, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ryrk5")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.102854, 0.503283, -0.0918074)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_glyix")

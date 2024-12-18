@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="PlayerLife" load_steps=2 format=3 uid="uid://bkwp531i4kj71"]
+
+[ext_resource type="Script" path="res://Scripts/RSO_PlayerLife.gd" id="1_bfb10"]
+
+[resource]
+script = ExtResource("1_bfb10")
