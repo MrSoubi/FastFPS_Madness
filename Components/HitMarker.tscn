@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://rsrl2tpf1d0r"]
+
+[ext_resource type="Script" path="res://Scripts/hit_marker.gd" id="1_rx5v1"]
+
+[node name="HitMarker" type="Label3D"]
+text = "DAMAGE"
+script = ExtResource("1_rx5v1")

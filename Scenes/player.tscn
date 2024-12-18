@@ -2,25 +2,25 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fmg83"]
 [ext_resource type="PackedScene" uid="uid://dggxsed88765p" path="res://Scenes/wpn_pipe.tscn" id="2_a4ldc"]
-[ext_resource type="Resource" uid="uid://bkwp531i4kj71" path="res://Data/RSO_PlayerLife.tres" id="2_ojd7q"]
+[ext_resource type="PackedScene" uid="uid://cp3bn3ibhlyc6" path="res://Components/HealthComponent.tscn" id="4_ai5wa"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oq07p"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jtsbg"]
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_fmg83")
-life = ExtResource("2_ojd7q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_oq07p")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_jtsbg")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71073, 0)
 
+[node name="HealthComponent" parent="." instance=ExtResource("4_ai5wa")]
+MAX_HEALTH = 100.0
+
 [node name="WPN_Pipe" parent="." instance=ExtResource("2_a4ldc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.341289, 1.07526, -1.03281)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19747, -0.568549)
 
 [connection signal="on_attack" from="." to="WPN_Pipe" method="_on_player_on_attack"]

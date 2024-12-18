@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://divut2gp2qt8g"]
+
+[ext_resource type="PackedScene" uid="uid://cp3bn3ibhlyc6" path="res://Components/HealthComponent.tscn" id="1_jqscf"]
+[ext_resource type="PackedScene" uid="uid://c4yso5vhi4kyg" path="res://Components/HurtboxComponent.tscn" id="2_n4br2"]
+[ext_resource type="PackedScene" uid="uid://cq0q0giah7i30" path="res://hit_marker_spawner.tscn" id="3_5fumo"]
+[ext_resource type="PackedScene" uid="uid://rsrl2tpf1d0r" path="res://Components/HitMarker.tscn" id="3_m7hco"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0clvk"]
+
+[node name="Scarecrow" type="Node3D"]
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_jqscf")]
+MAX_HEALTH = 1000.0
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_n4br2")]
+health = NodePath("../HealthComponent")
+damage_factor = 1.0
+
+[node name="CollisionShape3D" parent="HurtboxComponent" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_0clvk")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="HitMarkerSpawner" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_5fumo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+template = ExtResource("3_m7hco")
+health = NodePath("../HealthComponent")
+
+[editable path="HurtboxComponent"]

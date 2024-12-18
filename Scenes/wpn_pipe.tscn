@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://csfy5ytsb88ce" path="res://Assets/SM_Wep_Pipe_01.fbx" id="1_bplc5"]
 [ext_resource type="Script" path="res://Scripts/wpn_pipe.gd" id="1_tfce0"]
+[ext_resource type="PackedScene" uid="uid://cuxotd7e5mmye" path="res://Components/HitboxComponent.tscn" id="3_jlmm4"]
 
 [sub_resource type="Animation" id="Animation_egdx2"]
 length = 0.001
@@ -64,22 +65,19 @@ _data = {
 "attack": SubResource("Animation_lm7kb")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_glyix"]
-radius = 0.340615
-
 [node name="WPN_Pipe" type="Node3D"]
 script = ExtResource("1_tfce0")
 
 [node name="SM_Wep_Pipe_01" parent="." instance=ExtResource("1_bplc5")]
 transform = Transform3D(-0.957558, 0.197395, -0.210047, 0.201899, 0.979407, -1.76505e-08, 0.205721, -0.0424081, -0.977692, 0, 0, 0)
 
+[node name="HitboxComponent" parent="SM_Wep_Pipe_01" instance=ExtResource("3_jlmm4")]
+transform = Transform3D(-0.957557, 0.201899, 0.205721, 0.197395, 0.979406, -0.042408, -0.210046, 7.82309e-08, -0.977691, -0.00492866, 0.489142, -0.0222539)
+damage = 10.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ryrk5")
 }
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.102854, 0.503283, -0.0918074)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_glyix")
+[editable path="SM_Wep_Pipe_01/HitboxComponent"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4yso5vhi4kyg"]
+
+[ext_resource type="Script" path="res://Scripts/Components/hurtbox_component.gd" id="1_hibu5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qetli"]
+
+[node name="HurtboxComponent" type="Area3D"]
+script = ExtResource("1_hibu5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qetli")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

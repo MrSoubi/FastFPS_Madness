@@ -7,8 +7,6 @@ signal on_attack
 
 var last_mouse_position: Vector2
 
-@export var life: PlayerLife
-
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -18,7 +16,6 @@ func _input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseButton:
 		if event.button_index == 1:
-			print("anim")
 			on_attack.emit()
 
 func _physics_process(delta: float) -> void:
