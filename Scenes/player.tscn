@@ -12,7 +12,6 @@ height = 1.5
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_fmg83")
 walking_speed = 9.0
-dash_speed = 13.0
 jump_velocity = 10.0
 
 [node name="StandingCollisionShape" type="CollisionShape3D" parent="."]
@@ -20,7 +19,7 @@ physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ekuof")
 
-[node name="DashingCollisionShape" type="CollisionShape3D" parent="."]
+[node name="SlidingCollisionShape" type="CollisionShape3D" parent="."]
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CapsuleShape3D_4l4mq")
@@ -40,4 +39,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.60253, -0.568549)
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 2, 0)
 
+[node name="SlideTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LabelSlideEnergy" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelVelocity" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+
 [connection signal="on_attack" from="." to="Head/WPN_Pipe" method="_on_player_on_attack"]
+[connection signal="timeout" from="SlideTimer" to="." method="_on_slide_timer_timeout"]
