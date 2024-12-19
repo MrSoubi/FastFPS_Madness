@@ -1,26 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://bihwn31s4edd5"]
+[gd_scene load_steps=6 format=3 uid="uid://bihwn31s4edd5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fmg83"]
 [ext_resource type="PackedScene" uid="uid://dggxsed88765p" path="res://Scenes/wpn_pipe.tscn" id="2_a4ldc"]
 [ext_resource type="PackedScene" uid="uid://cp3bn3ibhlyc6" path="res://Components/HealthComponent.tscn" id="4_ai5wa"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_jtsbg"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekuof"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4l4mq"]
+height = 1.5
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_fmg83")
+walking_speed = 9.0
+dash_speed = 13.0
+jump_velocity = 10.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="StandingCollisionShape" type="CollisionShape3D" parent="."]
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_jtsbg")
+shape = SubResource("CapsuleShape3D_ekuof")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71073, 0)
+[node name="DashingCollisionShape" type="CollisionShape3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_4l4mq")
+disabled = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_ai5wa")]
 MAX_HEALTH = 100.0
 
-[node name="WPN_Pipe" parent="." instance=ExtResource("2_a4ldc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19747, -0.568549)
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
-[connection signal="on_attack" from="." to="WPN_Pipe" method="_on_player_on_attack"]
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="WPN_Pipe" parent="Head" instance=ExtResource("2_a4ldc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.60253, -0.568549)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 2, 0)
+
+[connection signal="on_attack" from="." to="Head/WPN_Pipe" method="_on_player_on_attack"]
