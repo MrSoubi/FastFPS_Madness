@@ -60,5 +60,8 @@ layout_mode = 2
 [node name="LabelVelocity" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
 
+[node name="GroundRaycast" type="RayCast3D" parent="."]
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
 [connection signal="on_attack" from="." to="Head/WPN_Pipe" method="_on_player_on_attack"]
 [connection signal="timeout" from="SlideTimer" to="." method="_on_slide_timer_timeout"]
