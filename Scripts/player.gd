@@ -11,9 +11,6 @@ extends CharacterBody3D
 var current_speed = 5.0
 @export var walking_speed : float = 5.0
 
-@onready var label_slide_energy: Label = $Control/VBoxContainer/LabelSlideEnergy
-@onready var label_velocity: Label = $Control/VBoxContainer/LabelVelocity
-
 # Mouse
 @export var mouse_sensitivity : float = 0.2
 
@@ -117,10 +114,6 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 
 	move_and_slide()
-
-func _process(delta: float) -> void:
-	label_slide_energy.text = "slide energy: " + str(slide_energy)
-	label_velocity.text = "velocity: " + str(velocity.length())
 
 func _on_slide_timer_timeout() -> void:
 	can_slide = true

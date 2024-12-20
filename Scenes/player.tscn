@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bihwn31s4edd5"]
+[gd_scene load_steps=5 format=3 uid="uid://bihwn31s4edd5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fmg83"]
-[ext_resource type="PackedScene" uid="uid://dggxsed88765p" path="res://Scenes/wpn_pipe.tscn" id="2_a4ldc"]
 [ext_resource type="PackedScene" uid="uid://cp3bn3ibhlyc6" path="res://Components/HealthComponent.tscn" id="4_ai5wa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekuof"]
@@ -12,7 +11,7 @@ height = 1.5
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_fmg83")
 walking_speed = 9.0
-jump_velocity = 10.0
+jump_velocity = 15.0
 
 [node name="StandingCollisionShape" type="CollisionShape3D" parent="."]
 physics_interpolation_mode = 1
@@ -33,9 +32,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
-[node name="WPN_Pipe" parent="Head" instance=ExtResource("2_a4ldc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.60253, -0.568549)
-
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 2, 0)
 
@@ -43,25 +39,7 @@ target_position = Vector3(0, 2, 0)
 wait_time = 3.0
 one_shot = true
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="LabelSlideEnergy" type="Label" parent="Control/VBoxContainer"]
-layout_mode = 2
-
-[node name="LabelVelocity" type="Label" parent="Control/VBoxContainer"]
-layout_mode = 2
-
 [node name="GroundRaycast" type="RayCast3D" parent="."]
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
-[connection signal="on_attack" from="." to="Head/WPN_Pipe" method="_on_player_on_attack"]
 [connection signal="timeout" from="SlideTimer" to="." method="_on_slide_timer_timeout"]
