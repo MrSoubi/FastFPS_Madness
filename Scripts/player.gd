@@ -45,7 +45,7 @@ func _input(event: InputEvent) -> void:
 		rotate_body(event.relative)
 	
 	if event is InputEventMouseButton:
-		if event.button_index == 1:
+		if event.button_index == 1 and event.pressed:
 			on_attack.emit()
 
 func rotate_body(relative: Vector2):

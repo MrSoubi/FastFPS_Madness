@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bihwn31s4edd5"]
+[gd_scene load_steps=7 format=3 uid="uid://bihwn31s4edd5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fmg83"]
+[ext_resource type="Script" path="res://Scenes/weapon.gd" id="3_6tk66"]
 [ext_resource type="PackedScene" uid="uid://cp3bn3ibhlyc6" path="res://Components/HealthComponent.tscn" id="4_ai5wa"]
+[ext_resource type="PackedScene" uid="uid://betw4boriv0fb" path="res://Scenes/projectile.tscn" id="4_maev5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekuof"]
 
@@ -32,6 +34,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
+[node name="Weapon" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0647779, -2.39593)
+script = ExtResource("3_6tk66")
+projectile_template = ExtResource("4_maev5")
+
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 2, 0)
 
@@ -42,4 +49,5 @@ one_shot = true
 [node name="GroundRaycast" type="RayCast3D" parent="."]
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
+[connection signal="on_attack" from="." to="Head/Weapon" method="shoot"]
 [connection signal="timeout" from="SlideTimer" to="." method="_on_slide_timer_timeout"]
