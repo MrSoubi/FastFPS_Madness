@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://5kk4mfav3okt"]
+[gd_scene load_steps=14 format=3 uid="uid://5kk4mfav3okt"]
 
 [ext_resource type="Material" uid="uid://21w8p0d17jd8" path="res://Assets/Materials/Light/grid_material_light.tres" id="1_vhlo8"]
 [ext_resource type="PackedScene" uid="uid://bihwn31s4edd5" path="res://Scenes/player.tscn" id="1_yp5ff"]
 [ext_resource type="PackedScene" uid="uid://divut2gp2qt8g" path="res://Scenes/scarecrow.tscn" id="2_84gdb"]
 [ext_resource type="Material" uid="uid://deianpxedqsja" path="res://Assets/Materials/Orange/grid_material_orange.tres" id="4_g7n0o"]
 [ext_resource type="Material" uid="uid://cor7wyexlm1ae" path="res://Assets/Materials/Green/grid_material_green.tres" id="5_nblxe"]
-[ext_resource type="PackedScene" uid="uid://dfde06iqcvjt6" path="res://Scenes/bo_cube.tscn" id="6_mh4ec"]
+[ext_resource type="PackedScene" uid="uid://dfde06iqcvjt6" path="res://Scenes/BlockOut/blockout_mesh.tscn" id="6_mh4ec"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x1l51"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -26,6 +26,8 @@ albedo_color = Color(0.385493, 0.385492, 0.385492, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_hux6f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5g3dm"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pxm6d"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -89,6 +91,11 @@ color = 2
 [node name="BO_Cube2" parent="." instance=ExtResource("6_mh4ec")]
 transform = Transform3D(10.2805, 0, 0, 0, -0.799522, -0.552264, 0, 0.861442, -0.512567, -5.84193, 1.7255, 0.533636)
 color = 1
+
+[node name="BlockOut_Mesh" parent="." instance=ExtResource("6_mh4ec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3865, 2.87128, -1.96296)
+mesh = SubResource("CylinderMesh_pxm6d")
+color = 3
 
 [editable path="Scarecrow"]
 [editable path="Scarecrow/HurtboxComponent"]

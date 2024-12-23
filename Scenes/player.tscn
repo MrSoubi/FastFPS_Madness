@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bihwn31s4edd5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fmg83"]
-[ext_resource type="Script" path="res://Scenes/weapon.gd" id="3_6tk66"]
+[ext_resource type="Script" path="res://Scripts/weapon.gd" id="3_6tk66"]
 [ext_resource type="PackedScene" uid="uid://cp3bn3ibhlyc6" path="res://Components/HealthComponent.tscn" id="4_ai5wa"]
 [ext_resource type="PackedScene" uid="uid://betw4boriv0fb" path="res://Scenes/projectile.tscn" id="4_maev5"]
 

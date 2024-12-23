@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfde06iqcvjt6"]
+
+[ext_resource type="Script" path="res://Scripts/bo_cube.gd" id="1_6bf7k"]
+[ext_resource type="Material" uid="uid://cor7wyexlm1ae" path="res://Assets/Materials/Green/grid_material_green.tres" id="2_b7pvj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hijgo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1n5og"]
+
+[node name="BlockOut_Mesh" type="Node3D"]
+script = ExtResource("1_6bf7k")
+mesh = SubResource("BoxMesh_hijgo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hijgo")
+surface_material_override/0 = ExtResource("2_b7pvj")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("BoxShape3D_1n5og")

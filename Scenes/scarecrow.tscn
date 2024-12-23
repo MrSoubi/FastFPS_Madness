@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cp3bn3ibhlyc6" path="res://Components/HealthComponent.tscn" id="1_jqscf"]
 [ext_resource type="PackedScene" uid="uid://c4yso5vhi4kyg" path="res://Components/HurtboxComponent.tscn" id="2_n4br2"]
-[ext_resource type="PackedScene" uid="uid://cq0q0giah7i30" path="res://hit_marker_spawner.tscn" id="3_5fumo"]
+[ext_resource type="PackedScene" uid="uid://cq0q0giah7i30" path="res://Scenes/hit_marker_spawner.tscn" id="3_5fumo"]
 [ext_resource type="PackedScene" uid="uid://rsrl2tpf1d0r" path="res://Components/HitMarker.tscn" id="3_m7hco"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0clvk"]

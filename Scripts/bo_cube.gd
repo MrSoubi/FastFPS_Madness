@@ -1,7 +1,8 @@
 @tool
 extends Node3D
 
-@export var mesh_instance_3d: MeshInstance3D
+@onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
+
 const GRID_MATERIAL_DARK = preload("res://Assets/Materials/Dark/grid_material_dark.tres")
 const GRID_MATERIAL_GREEN = preload("res://Assets/Materials/Green/grid_material_green.tres")
 const GRID_MATERIAL_LIGHT = preload("res://Assets/Materials/Light/grid_material_light.tres")
@@ -18,9 +19,17 @@ enum grid_color {
 	DARK
 }
 
+@export var mesh : Mesh :
+	get:
+		return mesh
+	set (value):
+		mesh = value
+		mesh_instance_3d.mesh = mesh
+		_set_grid_color(color)
+
 @export var color : grid_color :
 	get:
-			return color
+		return color
 	set (value):
 		color = value
 		if Engine.is_editor_hint():
@@ -28,7 +37,6 @@ enum grid_color {
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
-		print(color)
 		_set_grid_color(color)
 
 func _set_grid_color(color : grid_color):
