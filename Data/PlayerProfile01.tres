@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="PlayerControllerProfil" load_steps=2 format=3 uid="uid://cx4cnb47sf0sx"]
 
-[ext_resource type="Script" path="res://Data/player_controller_profil.gd" id="1_n8x56"]
+[ext_resource type="Script" path="res://Data/player_controller_profil.gd" id="1_46cso"]
 
 [resource]
-script = ExtResource("1_n8x56")
-walking_speed = 5.0
+script = ExtResource("1_46cso")
+walking_speed = 10.0
 mouse_sensitivity = 0.2
 lerp_speed_on_ground = 10.0
 lerp_speed_on_air = 5.0
-jump_velocity = 4.5
+jump_velocity = 15.0
 slide_speed = 8.0
 slide_depth = -0.6
 max_slide_energy = 3.0

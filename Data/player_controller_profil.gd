@@ -1,7 +1,7 @@
 class_name PlayerControllerProfil
 extends Resource
 
-@export var walking_speed : float = 5.0
+@export var walking_speed : float = 10
 
 # Mouse
 @export var mouse_sensitivity : float = 0.2
@@ -9,7 +9,7 @@ extends Resource
 @export var lerp_speed_on_ground : float = 10
 @export var lerp_speed_on_air : float = 5
 
-@export var jump_velocity = 4.5
+@export var jump_velocity = 15
 
 # Slide
 @export var slide_speed : float = 8.0
