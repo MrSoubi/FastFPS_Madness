@@ -7,9 +7,8 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1n5og"]
 
-[node name="BlockOut_Mesh" type="Node3D" node_paths=PackedStringArray("mesh_instance_3d")]
+[node name="BlockOut_Mesh" type="Node3D"]
 script = ExtResource("1_6bf7k")
-mesh_instance_3d = NodePath("MeshInstance3D")
 mesh = SubResource("BoxMesh_hijgo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
