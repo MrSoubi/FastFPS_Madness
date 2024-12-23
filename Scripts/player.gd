@@ -12,25 +12,25 @@ extends CharacterBody3D
 @onready var ground_raycast: RayCast3D = $GroundRaycast
 
 var current_speed = 5.0
-var walking_speed : float = data.walking_speed
+@onready var walking_speed : float = data.walking_speed
 
 # Mouse
-var mouse_sensitivity : float = data.mouse_sensitivity
+@onready var mouse_sensitivity : float = data.mouse_sensitivity
 
 var lerp_speed : float
-var lerp_speed_on_ground : float = data.lerp_speed_on_ground
-var lerp_speed_on_air : float = data.lerp_speed_on_air
+@onready var lerp_speed_on_ground : float = data.lerp_speed_on_ground
+@onready var lerp_speed_on_air : float = data.lerp_speed_on_air
 
-var jump_velocity = data.jump_velocity
+@onready var jump_velocity = data.jump_velocity
 var direction : Vector3 = Vector3.ZERO
 
 var can_slide : bool = true
 var is_sliding : bool = false
 
 # Slide
-var slide_speed : float = data.slide_speed
-var slide_depth : float = data.slide_depth
-var max_slide_energy : float = data.max_slide_energy
+@onready var slide_speed : float = data.slide_speed
+@onready var slide_depth : float = data.slide_depth
+@onready var max_slide_energy : float = data.max_slide_energy
 var slide_energy : float = 3
 
 var max_jump_charge : int = 2
