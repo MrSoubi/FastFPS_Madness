@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody3D
 
+@export var data : PlayerControllerProfil
+
 # Player nodes
 @onready var standing_collision_shape: CollisionShape3D = $StandingCollisionShape
 @onready var sliding_collision_shape: CollisionShape3D = $SlidingCollisionShape
@@ -10,25 +12,25 @@ extends CharacterBody3D
 @onready var ground_raycast: RayCast3D = $GroundRaycast
 
 var current_speed = 5.0
-@export var walking_speed : float = 5.0
+var walking_speed : float = data.walking_speed
 
 # Mouse
-@export var mouse_sensitivity : float = 0.2
+var mouse_sensitivity : float = data.mouse_sensitivity
 
 var lerp_speed : float
-@export var lerp_speed_on_ground : float = 10
-@export var lerp_speed_on_air : float = 5
+var lerp_speed_on_ground : float = data.lerp_speed_on_ground
+var lerp_speed_on_air : float = data.lerp_speed_on_air
 
-@export var jump_velocity = 4.5
+var jump_velocity = data.jump_velocity
 var direction : Vector3 = Vector3.ZERO
 
 var can_slide : bool = true
 var is_sliding : bool = false
 
 # Slide
-@export var slide_speed : float = 8.0
-@export var slide_depth : float = -0.6
-@export var max_slide_energy : float = 3
+var slide_speed : float = data.slide_speed
+var slide_depth : float = data.slide_depth
+var max_slide_energy : float = data.max_slide_energy
 var slide_energy : float = 3
 
 var max_jump_charge : int = 2

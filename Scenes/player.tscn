@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bihwn31s4edd5"]
+[gd_scene load_steps=8 format=3 uid="uid://bihwn31s4edd5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fmg83"]
+[ext_resource type="Resource" uid="uid://cx4cnb47sf0sx" path="res://Data/PlayerProfile01.tres" id="2_ihvgr"]
 [ext_resource type="Script" path="res://Scripts/weapon.gd" id="3_6tk66"]
 [ext_resource type="PackedScene" uid="uid://cp3bn3ibhlyc6" path="res://Components/HealthComponent.tscn" id="4_ai5wa"]
 [ext_resource type="PackedScene" uid="uid://betw4boriv0fb" path="res://Scenes/projectile.tscn" id="4_maev5"]
@@ -12,8 +13,7 @@ height = 1.5
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_fmg83")
-walking_speed = 9.0
-jump_velocity = 15.0
+data = ExtResource("2_ihvgr")
 
 [node name="StandingCollisionShape" type="CollisionShape3D" parent="."]
 physics_interpolation_mode = 1
