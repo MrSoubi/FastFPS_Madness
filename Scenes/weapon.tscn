@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://baojhjm30jaqa"]
+
+[ext_resource type="Script" path="res://Scripts/weapon.gd" id="1_7vyiy"]
+[ext_resource type="PackedScene" uid="uid://betw4boriv0fb" path="res://Scenes/projectile.tscn" id="2_4ogcc"]
+[ext_resource type="PackedScene" uid="uid://bk5r48rlbnkef" path="res://External/PolygonApocalypseWasteland/Prefabs/Weapons/Guns/Presets/SM_Wep_Flaregun_Preset_01.prefab.scn" id="3_maqyq"]
+
+[node name="Weapon" type="Node3D"]
+script = ExtResource("1_7vyiy")
+projectile_template = ExtResource("2_4ogcc")
+
+[node name="SM_Wep_Flaregun_Preset_01" parent="." instance=ExtResource("3_maqyq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="SM_Wep_Flaregun_Barrel_01" parent="SM_Wep_Flaregun_Preset_01" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.22646e-08, 0.0692974, 0.0549305)
+
+[node name="MeshRenderer" parent="SM_Wep_Flaregun_Preset_01/SM_Wep_Flaregun_Barrel_01" index="0"]
+cast_shadow = 0
+
+[node name="MeshRenderer" parent="SM_Wep_Flaregun_Preset_01/SM_Wep_Flaregun_Barrel_01/SM_Wep_Attach_Flaregun_01" index="0"]
+cast_shadow = 0
+
+[node name="SM_Wep_Flaregun_Body_01" parent="SM_Wep_Flaregun_Preset_01" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.22646e-08, 0.0631276, -0.0473291)
+
+[node name="MeshRenderer" parent="SM_Wep_Flaregun_Preset_01/SM_Wep_Flaregun_Body_01" index="0"]
+cast_shadow = 0
+
+[node name="MeshRenderer" parent="SM_Wep_Flaregun_Preset_01/SM_Wep_Flaregun_Body_01/SM_Wep_Flaregun_Hammer_01" index="0"]
+cast_shadow = 0
+
+[node name="MeshRenderer" parent="SM_Wep_Flaregun_Preset_01/SM_Wep_Flaregun_Body_01/SM_Wep_Flaregun_Trigger_01" index="0"]
+cast_shadow = 0
+
+[node name="SM_Wep_Flaregun_Handle_01" parent="SM_Wep_Flaregun_Preset_01" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.22646e-08, 0.0259276, -0.0726291)
+
+[node name="MeshRenderer" parent="SM_Wep_Flaregun_Preset_01/SM_Wep_Flaregun_Handle_01" index="0"]
+cast_shadow = 0
+
+[node name="ProjectileOrigin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0280823, 0.100766, -0.5)
+
+[editable path="SM_Wep_Flaregun_Preset_01"]

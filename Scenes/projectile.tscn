@@ -1,17 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://betw4boriv0fb"]
+[gd_scene load_steps=5 format=3 uid="uid://betw4boriv0fb"]
 
 [ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_2kn65"]
 [ext_resource type="PackedScene" uid="uid://cuxotd7e5mmye" path="res://Components/HitboxComponent.tscn" id="1_aq5qu"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_jx7bg"]
-radius = 0.1
-height = 0.2
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6b0v"]
+albedo_color = Color(0.815686, 0.807843, 0, 1)
+emission_enabled = true
+emission = Color(0.717383, 0.35666, 0.0434978, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_imp3c"]
+size = Vector3(0.05, 0.05, 0.2)
 
 [node name="Projectile" type="Node3D"]
 script = ExtResource("1_2kn65")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_jx7bg")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+material_override = SubResource("StandardMaterial3D_p6b0v")
+mesh = SubResource("BoxMesh_imp3c")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("1_aq5qu")]
 damage = 5.0

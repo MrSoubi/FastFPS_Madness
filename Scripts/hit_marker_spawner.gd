@@ -8,6 +8,8 @@ func _ready() -> void:
 
 func _generate_hitmarker(damage: float):
 	var hitmarker = template.instantiate() as HitMarker
-	add_child(hitmarker)
+	get_tree().root.add_child(hitmarker)
+	hitmarker.position = global_position
+	hitmarker.rotation = global_rotation
 	hitmarker.initialize(damage)
 	

@@ -49,7 +49,7 @@ func _input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
-			on_attack.emit()
+			on_attack.emit(velocity)
 
 func rotate_body(relative: Vector2):
 	rotate_y(deg_to_rad(-relative.x * mouse_sensitivity))

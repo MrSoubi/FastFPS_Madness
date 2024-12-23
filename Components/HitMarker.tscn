@@ -4,4 +4,5 @@
 
 [node name="HitMarker" type="Label3D"]
 text = "DAMAGE"
+font_size = 150
 script = ExtResource("1_rx5v1")

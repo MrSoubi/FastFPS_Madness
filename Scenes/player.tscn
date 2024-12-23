@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bihwn31s4edd5"]
+[gd_scene load_steps=7 format=3 uid="uid://bihwn31s4edd5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fmg83"]
 [ext_resource type="Resource" uid="uid://cx4cnb47sf0sx" path="res://Data/PlayerProfile01.tres" id="2_ihvgr"]
-[ext_resource type="Script" path="res://Scripts/weapon.gd" id="3_6tk66"]
 [ext_resource type="PackedScene" uid="uid://cp3bn3ibhlyc6" path="res://Components/HealthComponent.tscn" id="4_ai5wa"]
-[ext_resource type="PackedScene" uid="uid://betw4boriv0fb" path="res://Scenes/projectile.tscn" id="4_maev5"]
+[ext_resource type="PackedScene" uid="uid://baojhjm30jaqa" path="res://Scenes/weapon.tscn" id="4_eldj6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekuof"]
 
@@ -34,10 +33,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
-[node name="Weapon" type="Node3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0647779, -0.945695)
-script = ExtResource("3_6tk66")
-projectile_template = ExtResource("4_maev5")
+[node name="Weapon" parent="Head" instance=ExtResource("4_eldj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.229126, -0.254452, -0.384665)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 2, 0)

@@ -39,6 +39,7 @@ enum grid_color {
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		_set_grid_color(color)
+		mesh_instance_3d.mesh = mesh
 
 func _set_grid_color(color : grid_color):
 	print(color)
