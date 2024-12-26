@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fmg83"]
 [ext_resource type="Resource" uid="uid://cx4cnb47sf0sx" path="res://Data/PlayerProfile01.tres" id="2_ihvgr"]
-[ext_resource type="PackedScene" uid="uid://cp3bn3ibhlyc6" path="res://Components/HealthComponent.tscn" id="4_ai5wa"]
+[ext_resource type="Script" path="res://addons/basic_health_system/Scripts/health.gd" id="4_1rp26"]
 [ext_resource type="PackedScene" uid="uid://baojhjm30jaqa" path="res://Scenes/weapon.tscn" id="4_eldj6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ekuof"]
@@ -25,9 +25,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CapsuleShape3D_4l4mq")
 disabled = true
 
-[node name="HealthComponent" parent="." instance=ExtResource("4_ai5wa")]
-MAX_HEALTH = 100.0
-
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
@@ -45,6 +42,9 @@ one_shot = true
 
 [node name="GroundRaycast" type="RayCast3D" parent="."]
 debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("4_1rp26")
 
 [connection signal="on_attack" from="." to="Head/Weapon" method="shoot"]
 [connection signal="timeout" from="SlideTimer" to="." method="_on_slide_timer_timeout"]
